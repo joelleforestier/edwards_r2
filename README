@@ -1,0 +1,15 @@
+# How to use edwards_r2 #
+
+#import edwards_r2 into your environment
+source("https://github.com/joelleforestier/edwards_r2/raw/main/edwards_r2.R")
+
+#run your multilevel model using lme4 and lmerTest and save the output as an object
+library(lme4)
+library(lmerTest)
+model <- lmer(dv ~ iv1 + iv2 + (iv1 + iv2 | nesting_var), data = df)
+
+#use edwards_r2 to calculate semipartial R2 for each predictor in your model
+edwards_r2(model)
+
+#cite Edwards et al., 2008 for the effect size calculation method:
+#Edwards, L. J., Muller, K. E., Wolfinger, R. D., Qaqish, B. F., & Schabenberger, O. (2008). An R2 statistic for fixed effects in the linear mixed model. Statistics in Medicine, 27 (6137-6157).
